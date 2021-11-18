@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
 
+
 class App extends Component {
   constructor(){
     super();
@@ -18,12 +19,12 @@ class App extends Component {
     .then(champion => this.setState({ champions: Object.values(champion.data) }))
   }
 
-
   handleChange = (e) => {
     this.setState({ searchField: e.target.value })
   }
 
   render(){ 
+    
     const { champions, searchField } = this.state;
     const filteredChampions = champions.filter(champion =>
       champion.name.toLowerCase().includes(searchField.toLowerCase())
@@ -34,7 +35,7 @@ class App extends Component {
         <SearchBox placeholder='search champions' handleChange={this.handleChange} />
         <CardList champions={filteredChampions}>
         </CardList> 
-
+       
       </div>
   )}
  
